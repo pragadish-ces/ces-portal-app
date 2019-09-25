@@ -1,9 +1,10 @@
+/* eslint-disable no-unreachable */
 import React, { Component } from 'react';
 import {
     Container,
     Header, Footer, FooterTab, Button, Icon, Body, Title, Text, Fab, View
 } from 'native-base';
-import { Screen1, Screen2, Screen3, Screen4 } from '../Screens';
+import { Screen } from '../Screens';
 
 export default class FooterTabsIconExample extends Component {
     constructor() {
@@ -17,33 +18,31 @@ export default class FooterTabsIconExample extends Component {
     renderSelectedTab() {
         switch (this.state.selectedTab) {
           case 'Screen1':
-            return (<Screen1 />);
+            return (<Screen title="Screen1" />);
             break;
           case 'Screen2':
-            return (<Screen2 />);
+            return (<Screen />);
             break;
           case 'Screen3':
-            return (<Screen3 />);
+            return (<Screen />);
             break;
           case 'Screen4': 
-            return (<Screen4 />);
+            return (<Screen />);
             break;
           default:
-              return (<Screen1 />);
+              return (<Screen />);
         }
       }
     render() {
         return (
             <Container>
                 <Header >
-                    <Button transparent >
-                        <Icon name='md-menu' />
-                    </Button>
                     <Body>
-                        <Title style={{ marginLeft: 80 }}>Leaves</Title>
+                        <Title style={{ marginLeft: 80 }}>Leave Information</Title>
                     </Body>
                     <Button
                         transparent
+                        onPress={() => this.props.navigation.navigate('Login')}
                     >
                         <Icon name='md-power' />
                     </Button>

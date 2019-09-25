@@ -8,9 +8,11 @@ import {
     Image,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { NetworkContext, NetworkProvider } from '../components/NetworkProvider';
 import { LoginAction } from '../actions/LoginAction';
 
 class LoginScreen extends Component {
+    static contextType = NetworkContext;
     constructor(props) {
         super(props);
         this.state = {
@@ -28,6 +30,8 @@ class LoginScreen extends Component {
     }
     render() {
         return (
+            <NetworkProvider>
+                <Text>You are now {this.context.isConnected ? 'online' : 'offline'}</Text>
             <View style={styles.container}>
                 <Image 
                     style={styles.imageContainer}
@@ -61,7 +65,7 @@ class LoginScreen extends Component {
                 >
                     <Text style={styles.loginText}>Login</Text>
                 </TouchableHighlight>
-            </View>);
+            </View></NetworkProvider>);
     }
 }
 
